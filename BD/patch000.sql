@@ -1,4 +1,4 @@
-----I-eli-02-12-2017----
+-------------------------------------I-eli-02-12-2017--------------------------------------
 
 --------------- SQL ---------------
 
@@ -41,4 +41,25 @@ CREATE TABLE public."formaEvaluacion" (
   PRIMARY KEY(id)
 ) 
 WITH (oids = false);
-----F-eli-02-12-2017----
+---------------------------------F-eli-02-12-2017--------------------------------------
+
+------------------------------I-sandra-02-12-2017-------------------------------------
+--------------- SQL ---------------
+
+ALTER TABLE public.carrera
+  ADD CONSTRAINT carrera_fk FOREIGN KEY (id_modalidad)
+    REFERENCES public.modalidad(id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+    NOT DEFERRABLE;
+    
+    --------------- SQL ---------------
+
+ALTER TABLE public.carrera
+  ADD CONSTRAINT carrera_fk1 FOREIGN KEY (id_formacion_carr)
+    REFERENCES public."formaEvaluacion"(id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+    NOT DEFERRABLE;
+
+-------------------------------F-sandra-02-12-2017---------------------------------
