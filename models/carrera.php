@@ -1,24 +1,39 @@
 <?php 
 require_once 'conexion.php';
 
-    class Carrera {
-        private $id;
-        private $nombre;
-        private $id_modalidad;
-        private $id_formacion_carr;
-        private $duracion;
-        private $fecha_creacion;
-        private $carga_horaria;
-        private $fecha_reg;
-        private $con;
+class Carrera {
+    private $id;
+    private $nombre;
+    private $id_modalidad;
+    private $id_formacion_carr;
+    private $duracion;
+    private $fecha_creacion;
+    private $carga_horaria;
+    private $fecha_reg;
+    private $con;
 
-     public function __construct(){
-        $this->con= new Conexion();
-     }
+public function __construct(){
+    $this->con= new Conexion();
+}
 public function getCarreras()
     {
         try {
-            $query = $this->con->dbh->prepare('select * from carrera');
+            $conexion= new Conexion();
+            $query = $conexion->con->dbh->prepare('select * from carrera');
+            $query->execute();
+            return $query->fetchAll();
+            $this->dbh = null;
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
+
+    public function getSelects($tabla)
+    {
+        try {
+            
+            $conexion= new Conexion();
+            $query = $conexion->dbh->prepare('select * from '.$tabla);
             $query->execute();
             return $query->fetchAll();
             $this->dbh = null;
@@ -27,6 +42,7 @@ public function getCarreras()
         }
     }
 public function setCarrera()
+
     {  //     $this->dbh->'carrera';
 
     }
@@ -45,23 +61,35 @@ public function setCarrera()
     public function insertarCarrera($nombre, $id_modalidad, $id_formacion_carr, $duracion, 
         $fecha_creacion, $carga_horaria)
     {
+        $resultado = false;
         try {
-            $query = $this->con->dbh->prepare('insert into carrera (nombre, id_modalidad, id_formacion_carr, duracion, fecha_creacion, carga_horaria, fecha_reg) values($nombre,$id_modalidad,$id_formacion_carr,$duracion,$fecha_creacion,$carga_horaria,now())');
-            /*$query->bindParam(1, $nombre);
-            $query->bindParam(2, $id_modalidad);
-            $query->bindParam(3, $id_formacion_carr);
-            $query->bindParam(4, $duracion);
-            $query->bindParam(5, $fecha_creacion);
-            $query->bindParam(6, $carga_horaria);
-           $query->bindParam(7, $fecha_reg);*/
+            $consulta = "insert into carrera (nombre, id_modalidad, id_formacion_carr, duracion, fecha_creacion, carga_horaria, fecha_reg) values('".$nombre."',".$id_modalidad.",".$id_formacion_carr.",".$duracion.",'".$fecha_creacion."',".$carga_horaria.",now())";
+            $query = $this->con->dbh->prepare($consulta);
+            $resultado = $query->execute();
+            $this->dbh = null;
+                        //echo "entre"; 
+                       // echo $consulta; 
 
-            //print_r($query);
-            $query->execute();
-            $this->con->dbh = null;
         } catch (PDOException $e) {
             $e->getMessage();
         }
+        return $resultado;
     }
+
+     public function save()
+     {
+        try{
+         $query = $this->con->dbh->prepare('INSERT INTO users (username, password) values (?,?)');
+            $query->bindParam(1, $this->username, PDO::PARAM_STR);
+            $query->bindParam(2, $this->password, PDO::PARAM_STR);
+            $query->execute();
+            $this->con->close();
+        }
+        catch(PDOException $e)
+        {
+            echo  $e->getMessage();
+        }
+     }
 
     public function update_Carrera($id, $nombre, $id_modalidad, $id_formacion_carr, $duracion , 
         $fecha_creacion, $carga_horaria, $fecha_reg)
@@ -106,7 +134,12 @@ public function setCarrera()
     {
         trigger_error('La clonación no es permitida!.', E_USER_ERROR);
     }
+
+      public static function baseurl()
+    {
+         return stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://' . $_SERVER['HTTP_HOST'] . "/inscripciones_incos/";
     }
+}
 
 
 
