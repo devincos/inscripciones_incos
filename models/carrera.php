@@ -22,10 +22,10 @@ class Carrera
     {
         try {
             $conexion = new Conexion();
-            $query = $conexion->con->dbh->prepare('select * from carrera');
+            $query = $conexion->dbh->prepare('select * from carrera');
             $query->execute();
             return $query->fetchAll();
-            $this->dbh = null;
+            $conexion->dbh = null;
         } catch (PDOException $e) {
             $e->getMessage();
         }

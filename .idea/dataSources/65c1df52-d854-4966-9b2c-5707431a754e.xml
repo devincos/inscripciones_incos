@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="incos_db@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.4">
+    <root id="1"/>
+    <database id="2" parent="1" name="incos_db">
+      <ObjectId>164074</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="postgres">
+      <ObjectId>12938</ObjectId>
+    </database>
+    <database id="4" parent="1" name="sismla_db">
+      <ObjectId>16394</ObjectId>
+    </database>
+    <database id="5" parent="1" name="costonotributarios_db">
+      <ObjectId>24577</ObjectId>
+    </database>
+    <database id="6" parent="1" name="prueba">
+      <ObjectId>139264</ObjectId>
+    </database>
+    <database id="7" parent="1" name="TBD">
+      <ObjectId>147456</ObjectId>
+    </database>
+    <schema id="8" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2017-12-24.13:40:35.650</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1585</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="9" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="10" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="11" parent="2" name="pg_temp_1">
+      <ObjectId>11736</ObjectId>
+    </schema>
+    <schema id="12" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11737</ObjectId>
+    </schema>
+    <schema id="13" parent="2" name="information_schema">
+      <ObjectId>12648</ObjectId>
+    </schema>
+    <sequence id="14" parent="8" name="carrera_id_seq">
+      <ObjectId>164075</ObjectId>
+      <StateNumber>1585</StateNumber>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="15" parent="8" name="forma_evaluacion_id_seq">
+      <ObjectId>164093</ObjectId>
+      <StateNumber>1585</StateNumber>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="16" parent="8" name="modalidad_id_seq">
+      <ObjectId>164085</ObjectId>
+      <StateNumber>1585</StateNumber>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <table id="17" parent="8" name="carrera">
+      <ObjectId>164077</ObjectId>
+      <StateNumber>1585</StateNumber>
+    </table>
+    <table id="18" parent="8" name="forma_evaluacion">
+      <ObjectId>164095</ObjectId>
+      <StateNumber>1585</StateNumber>
+    </table>
+    <table id="19" parent="8" name="modalidad">
+      <ObjectId>164087</ObjectId>
+      <StateNumber>1585</StateNumber>
+    </table>
+    <column id="20" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1585</StateNumber>
+      <SequenceName>carrera_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;carrera_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="21" parent="17" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <StateNumber>1585</StateNumber>
+    </column>
+    <column id="22" parent="17" name="id_modalidad">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>1585</StateNumber>
+    </column>
+    <column id="23" parent="17" name="id_formacion_carr">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>1585</StateNumber>
+    </column>
+    <column id="24" parent="17" name="duracion">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>1585</StateNumber>
+    </column>
+    <column id="25" parent="17" name="fecha_creacion">
+      <Position>6</Position>
+      <DataType>date|0</DataType>
+      <StateNumber>1585</StateNumber>
+    </column>
+    <column id="26" parent="17" name="carga_horaria">
+      <Position>7</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>1585</StateNumber>
+    </column>
+    <column id="27" parent="17" name="fecha_reg">
+      <Position>8</Position>
+      <DataType>timestamp|0</DataType>
+      <StateNumber>1585</StateNumber>
+    </column>
+    <index id="28" parent="17" name="carrera_pkey">
+      <ObjectId>164083</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="29" parent="17" name="carrera_pkey">
+      <ObjectId>164084</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>carrera_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="30" parent="17" name="carrera_fk">
+      <ObjectId>164101</ObjectId>
+      <ColNames>id_modalidad</ColNames>
+      <RefTableId>164087</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>modalidad</RefTableName>
+      <RefKeyName>modalidad_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="31" parent="17" name="carrera_fk1">
+      <ObjectId>164106</ObjectId>
+      <ColNames>id_formacion_carr</ColNames>
+      <RefTableId>164095</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>forma_evaluacion</RefTableName>
+      <RefKeyName>forma_evaluacion_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="32" parent="18" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1585</StateNumber>
+      <SequenceName>forma_evaluacion_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;forma_evaluacion_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="33" parent="18" name="evaluacion">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+      <StateNumber>1585</StateNumber>
+    </column>
+    <index id="34" parent="18" name="forma_evaluacion_pkey">
+      <ObjectId>164099</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="35" parent="18" name="forma_evaluacion_pkey">
+      <ObjectId>164100</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>forma_evaluacion_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="36" parent="19" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1585</StateNumber>
+      <SequenceName>modalidad_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;modalidad_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="37" parent="19" name="modalidad">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <StateNumber>1585</StateNumber>
+    </column>
+    <index id="38" parent="19" name="modalidad_pkey">
+      <ObjectId>164091</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="39" parent="19" name="modalidad_pkey">
+      <ObjectId>164092</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>modalidad_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

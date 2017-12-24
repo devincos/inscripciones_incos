@@ -5,7 +5,7 @@ include_once("../principal/menu.php");
 
 ?>
 <h1> Formulario de la carrera</h1>
-<form id="form1" name="form1" action="<?= Comun::baseurl(); ?>controllers/save.php" method="POST">
+<form id="form1" name="form1" action="<?= Comun::baseurl(); ?>controllers/carrera/save.php" method="POST">
     <fieldset align="center">
         <legend>Datos de las carreras</legend>
         <label>ID carrera</label>

@@ -24,7 +24,7 @@ class Forma_evaluacion
 
     public function set_Forma_evaluacion()
     {
-        $this->dbh->'formaEvaluacion';
+       // $this->dbh->'formaEvaluacion';
 
     }
 

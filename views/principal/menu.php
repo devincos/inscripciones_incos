@@ -22,9 +22,10 @@ include_once("cabecera.php");
     <div class="collapse navbar-collapse" id="menu">
         <ul class="nav navbar-nav">
             <li><a href="<?= Comun::baseurl(); ?>views/principal/inicio.php">Inicio</a></li>
-            <li><a href="<?= Comun::baseurl(); ?>views/carrera/form.php">Carreras</a></li>
-            <li><a href="price.php">Price List</a></li>
-            <li><a href="contact.php">Contact Us</a></li>
+            <li><a href="<?= Comun::baseurl(); ?>views/carrera/lista.php">Carreras</a></li>
+            <li><a href="estudiante.php">Estudiantes</a></li>
         </ul>
     </div>
 </nav>
+<br><br>
+<br><br>
