@@ -35,7 +35,7 @@ ALTER TABLE public.modalidad
   ADD PRIMARY KEY (id);
 --------------- SQL ---------------
 
-CREATE TABLE public."formaEvaluacion" (
+CREATE TABLE public."forma_evaluacion" (
   id SERIAL NOT NULL,
   evaluacion VARCHAR(30),
   PRIMARY KEY(id)
@@ -57,7 +57,7 @@ ALTER TABLE public.carrera
 
 ALTER TABLE public.carrera
   ADD CONSTRAINT carrera_fk1 FOREIGN KEY (id_formacion_carr)
-    REFERENCES public."formaEvaluacion"(id)
+    REFERENCES public."forma_evaluacion"(id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
     NOT DEFERRABLE;

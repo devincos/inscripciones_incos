@@ -1,12 +1,16 @@
-<? php namespace Models;
-	
-	class Forma_evaluacion {
-		public $id;
-  		public $evaluacion;
-  	public function __construct(){
-        $this->con= new conexion();
-     }
-	public function get_Forma_evaluacion()
+<?php
+
+class Forma_evaluacion
+{
+    public $id;
+    public $evaluacion;
+
+    public function __construct()
+    {
+        $this->con = new conexion();
+    }
+
+    public function get_Forma_evaluacion()
     {
         try {
             $query = $this->dbh->prepare('select * from formaEvaluacion');
@@ -17,10 +21,13 @@
             $e->getMessage();
         }
     }
-public function set_Forma_evaluacion()
-    {       $this->dbh->'formaEvaluacion';
+
+    public function set_Forma_evaluacion()
+    {
+        $this->dbh->'formaEvaluacion';
 
     }
+
     public function delete_Forma_evaluacion($id)
     {
         try {
@@ -58,6 +65,7 @@ public function set_Forma_evaluacion()
             $e->getMessage();
         }
     }
+
     public function listar_Forma_evaluacion($id, $evaluacion)
     {
         try {
@@ -70,9 +78,11 @@ public function set_Forma_evaluacion()
             $e->getMessage();
         }
     }
+
     public function __clone()
     {
         trigger_error('La clonación no es permitida!.', E_USER_ERROR);
     }
-	}
+}
+
 ?>
