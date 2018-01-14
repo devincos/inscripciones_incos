@@ -3,14 +3,14 @@ require_once 'conexion.php';
 
 class Carrera
 {
-    private $id;
-    private $nombre;
-    private $id_modalidad;
-    private $id_formacion_carr;
-    private $duracion;
-    private $fecha_creacion;
-    private $carga_horaria;
-    private $fecha_reg;
+    public $id;
+    public $nombre;
+    public $id_modalidad;
+    public $id_formacion_carr;
+    public $duracion;
+    public $fecha_creacion;
+    public $carga_horaria;
+    public $fecha_reg;
     private $con;
 
     public function __construct()

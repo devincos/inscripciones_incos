@@ -1,13 +1,24 @@
 <?php
-require_once "../../models/comun.php";
+require_once "../../models/config.php";
 //llamando a la funcion del controlador
 require_once "../../controllers/carrera/list.php";
 include_once("../principal/menu.php"); ?>
 <div class="container">
 
     <div class="main">
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $mensaje = filter_input(INPUT_GET, 'mensaje', FILTER_SANITIZE_STRING);
+            $error = filter_input(INPUT_GET, 'error', FILTER_SANITIZE_STRING);
+            if (!empty($mensaje)) { ?>
+                <div class="alert alert-success">
+                    <strong>Exito!</strong> <?= $mensaje ?>.
+                </div>
+            <?php }
+        } ?>
+
         <div class="row">
-            <a href="<?= Comun::baseurl(); ?>views/carrera/form.php" class="btn btn-success"> Nueva carrera</a><br><br>
+            <a href="<?= Config::baseurl(); ?>views/carrera/form.php" class="btn btn-success"> Nueva carrera</a><br><br>
         </div>
         <table class='table table-condensed'>
             <thead>
@@ -37,8 +48,10 @@ include_once("../principal/menu.php"); ?>
                         <?= $carrera['fecha_reg']; ?>
                     </td>
                     <td>
-                        <a href="<?= Comun::baseurl() ?>'controllers/carrera/update.php" class="btn btn-primary glyphicon glyphicon-pencil"></a>
-                        <a href="<?= Comun::baseurl() ?>'controllers/carrera/delete.php" class="btn btn-danger glyphicon glyphicon-trash"></a>
+                        <a href="<?= Config::baseurl() ?>'controllers/carrera/update.php"
+                           class="btn btn-primary glyphicon glyphicon-pencil"></a>
+                        <a href="<?= Config::baseurl() ?>'controllers/carrera/delete.php"
+                           class="btn btn-danger glyphicon glyphicon-trash"></a>
                     </td>
                 </tr>
             <?php } ?>

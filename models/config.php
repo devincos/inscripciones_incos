@@ -1,6 +1,6 @@
 <?php
 
-class Comun
+class Config
 {
     public static function baseurl()
     {
@@ -9,6 +9,5 @@ class Comun
         return stripos($_SERVER['SERVER_PROTOCOL'], 'https') === true ? 'https://' : 'http://' . $_SERVER['HTTP_HOST'] . $subcarpetas;
     }
 }
-
 
 ?>
