@@ -18,7 +18,7 @@ cd inscripciones_incos
 
 
 ## Paso 2
-##Configurar el archivo config.php
+## Configurar el archivo config.php
 Configurar el archivo ``models/config.php``, donde debemos colocar la direccion de donde se encuentra el proyecto de acuerdo al siguiente ejemplo: 
 
 Si mi proyecto esta en ``http://localhost/incos/dev/inscripciones_incos/`` 
