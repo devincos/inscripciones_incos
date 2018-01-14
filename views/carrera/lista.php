@@ -6,33 +6,44 @@ include_once("../principal/menu.php"); ?>
 <div class="container">
 
     <div class="main">
-        <?php
-        echo "<table class='table table-condensed'> 
-<thead>
-<th> ID </th>
-<th> NOMBRE </th>
-<th> MODALIDAD </th>
-<th> OPCIONES</th>
-</thead>
-<tbody>";
-        foreach ($arrCarreras as $carrera) {
-            echo "<tr><td>";
-            echo $carrera['id'];
-            echo "</td> ";
-            echo "<td>";
-            echo $carrera['nombre'];
-            echo "</td>";
-            echo "<td>";
-            echo $carrera['id_modalidad'];
-            echo "</td>";
-            echo "<td>";
-            echo '<a href="' . Comun::baseurl() . 'controllers/carrera/update.php" >Actualizar</a>';
-            echo "</td>";
-            echo "</tr>";
-        }
-        echo "</tbody>
-</table>";
-        ?>
+        <div class="row">
+            <a href="<?= Comun::baseurl(); ?>views/carrera/form.php" class="btn btn-success"> Nueva carrera</a><br><br>
+        </div>
+        <table class='table table-condensed'>
+            <thead>
+            <th> ID</th>
+            <th> NOMBRE</th>
+            <th> MODALIDAD</th>
+            <th> EVALUACION</th>
+            <th> FECHA DE REGISTRO</th>
+            <th> OPCIONES</th>
+            </thead>
+            <tbody>
+            <?php foreach ($arrCarreras as $carrera) { ?>
+                <tr>
+                    <td>
+                        <?= $carrera['id']; ?>
+                    </td>
+                    <td>
+                        <?= $carrera['nombre']; ?>
+                    </td>
+                    <td>
+                        <?= $carrera['modalidad']; ?>
+                    </td>
+                    <td>
+                        <?= $carrera['evaluacion']; ?>
+                    </td>
+                    <td>
+                        <?= $carrera['fecha_reg']; ?>
+                    </td>
+                    <td>
+                        <a href="<?= Comun::baseurl() ?>'controllers/carrera/update.php" class="btn btn-primary glyphicon glyphicon-pencil"></a>
+                        <a href="<?= Comun::baseurl() ?>'controllers/carrera/delete.php" class="btn btn-danger glyphicon glyphicon-trash"></a>
+                    </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
     </div>
 </div>
 <?php include_once("../principal/pie.php"); ?>

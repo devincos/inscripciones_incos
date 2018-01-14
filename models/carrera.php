@@ -22,7 +22,7 @@ class Carrera
     {
         try {
             $conexion = new Conexion();
-            $query = $conexion->dbh->prepare('select * from carrera');
+            $query = $conexion->dbh->prepare('select c.id, c.nombre,m.modalidad,fe.evaluacion,c.fecha_reg from carrera c join modalidad m ON c.id_modalidad = m.id JOIN forma_evaluacion fe ON c.id_formacion_carr = fe.id');
             $query->execute();
             return $query->fetchAll();
             $conexion->dbh = null;

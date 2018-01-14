@@ -16,7 +16,7 @@ $post = (object)filter_input_array(INPUT_POST, $args);
 
 $carrera_nueva = new Carrera();
 if ($carrera_nueva->insertarCarrera($post->nombre, $post->id_modalidad, $post->id_formacion_carr, $post->duracion, $post->fecha_creacion, $post->carga_horaria)) {
-    header("Location:" . Comun::baseurl() . "controllers/carrera/list.php");
+    header("Location:" . Comun::baseurl() . "views/carrera/lista.php");
 
 } else {
     echo "error al insertar";

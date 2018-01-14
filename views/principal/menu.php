@@ -17,7 +17,7 @@ include_once("cabecera.php");
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<?= Comun::baseurl(); ?>views/principal/inicio.php">INCOS</a>
+        <a class="navbar-brand" href="<?= Comun::baseurl(); ?>views/principal/inicio.php">INCOS - INSCRIPCIONES</a>
     </div>
     <div class="collapse navbar-collapse" id="menu">
         <ul class="nav navbar-nav">
