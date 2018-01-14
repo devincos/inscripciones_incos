@@ -1,6 +1,16 @@
 #**Inscripciones INCOS**
 Sistema realizado para la inscripcion de alumnos de acuerdo a la carrera
 
+ESTRUCTURA DEL DIRECTORIO
+-------------------
+
+      BD/                 Contiene los script de la base de datos
+      controllers/        Contiene los controladores de la aplicacion WEB
+      models/             Contiene los modelos 
+      views/              Contiene las vistas de la aplicacion WEB
+      index.php           Archivo inicial del proyecto
+
+
 ## INSTALACION
 ## Paso 1
 ### Con GIT
@@ -42,7 +52,7 @@ class Config
 
 ## Paso 3
 
-##Configurar la base de datos
+## Configurar la base de datos
 si no tenemos la base de datos ``incos_db`` creada entonces debemos de crearla y cargar los script respectivos
 
 
