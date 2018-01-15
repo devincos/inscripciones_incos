@@ -48,9 +48,10 @@ include_once("../principal/menu.php"); ?>
                         <?= $carrera['fecha_reg']; ?>
                     </td>
                     <td>
-                        <a href="<?= Config::baseurl() ?>'controllers/carrera/update.php"
+                        <!--Opcion para actualizar el valor de la carrera-->
+                        <a href="<?= Config::baseurl() ?>views/carrera/form.php?id=<?= $carrera['id'] ?>"
                            class="btn btn-primary glyphicon glyphicon-pencil"></a>
-                        <a href="<?= Config::baseurl() ?>'controllers/carrera/delete.php"
+                        <a href="<?= Config::baseurl() ?>controllers/carrera/delete.php"
                            class="btn btn-danger glyphicon glyphicon-trash"></a>
                     </td>
                 </tr>

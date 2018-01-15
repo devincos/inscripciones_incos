@@ -46,24 +46,6 @@ class Carrera
         }
     }
 
-    public function setCarrera()
-
-    {  //     $this->dbh->'carrera';
-
-    }
-
-    public function delete_Carrera($id)
-    {
-        try {
-            $query = $this->dbh->prepare('delete from carrera where id = ?');
-            $query->bindParam(1, $id);
-            $query->execute();
-            $this->dbh = null;
-        } catch (PDOException $e) {
-            $e->getMessage();
-        }
-    }
-
     public function insertarCarrera($nombre, $id_modalidad, $id_formacion_carr, $duracion,
                                     $fecha_creacion, $carga_horaria)
     {
@@ -83,8 +65,22 @@ class Carrera
     }
 
 
-    public function update_Carrera($id, $nombre, $id_modalidad, $id_formacion_carr, $duracion,
-                                   $fecha_creacion, $carga_horaria, $fecha_reg)
+    public function getCarrera($id)
+    {
+        try {
+            $conexion = new Conexion();
+            $query = $conexion->dbh->prepare('select c.* from carrera c where id=?;');
+            $query->bindValue(1, $id, PDO::PARAM_INT);
+            $query->execute();
+            return $query->fetch();
+            $conexion->dbh = null;
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
+
+    public function ActualizarCarrera($id_carrera, $nombre, $id_modalidad, $id_formacion_carr, $duracion,
+                                      $fecha_creacion, $carga_horaria, $fecha_reg)
     {
         try {
             $query = $this->dbh->prepare('update carrera SET nombre = ?, id_modalidad= ?, id_formacion_carr= ?, duracion= ?, fecha_creacion= ?, carga_horaria= ?, fecha_reg= ? 
@@ -96,7 +92,7 @@ class Carrera
             $query->bindParam(5, $fecha_creacion);
             $query->bindParam(6, $carga_horaria);
             $query->bindParam(7, $fecha_reg);
-            $query->bindParam(8, $id);
+            $query->bindParam(8, $id_carrera);
             $query->execute();
             $this->dbh = null;
         } catch (PDOException $e) {
@@ -104,25 +100,18 @@ class Carrera
         }
     }
 
-    public function listar_Carrera($id, $nombre, $id_modalidad, $id_formacion_carr, $duracion,
-                                   $fecha_creacion, $carga_horaria, $fecha_reg)
+    public function BorrarCarrera($id)
     {
         try {
-            $query = $this->dbh->prepare('select all  from carrera');
-            $query->bindParam(1, $nombre);
-            $query->bindParam(2, $id_modalidad);
-            $query->bindParam(3, $id_formacion_carr);
-            $query->bindParam(4, $duracion);
-            $query->bindParam(5, $fecha_creacion);
-            $query->bindParam(6, $carga_horaria);
-            $query->bindParam(7, $fecha_reg);
-            $query->bindParam(8, $id);
+            $query = $this->dbh->prepare('delete from carrera where id = ?');
+            $query->bindParam(1, $id);
             $query->execute();
             $this->dbh = null;
         } catch (PDOException $e) {
             $e->getMessage();
         }
     }
+
 
     public function __clone()
     {
