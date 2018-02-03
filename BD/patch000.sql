@@ -61,5 +61,18 @@ ALTER TABLE public.carrera
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
     NOT DEFERRABLE;
-
 -------------------------------F-sandra-02-12-2017---------------------------------
+
+------------------------------I-sandra-01-03-02-2018-------------------------------------
+--------------- SQL ---------------
+
+CREATE TABLE public.materia (
+  id_materia SERIAL NOT NULL,
+  nom_materia VARCHAR(50) NOT NULL,
+  nro_hrs INTEGER,
+  "año_materia" INTEGER,
+  id_carrera INTEGER NOT NULL,
+  PRIMARY KEY(id_materia)
+) 
+WITH (oids = false);
+-------------------------------F-sandra-01-03-02-2018---------------------------------
