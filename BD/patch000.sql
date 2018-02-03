@@ -76,3 +76,40 @@ CREATE TABLE public.materia (
 ) 
 WITH (oids = false);
 -------------------------------F-sandra-01-03-02-2018---------------------------------
+------------------------------I-sandra-02-03-02-2018-------------------------------------
+--------------- SQL ---------------
+
+CREATE TABLE public.estudiante (
+  id_estudiante SERIAL NOT NULL,
+  ci INTEGER NOT NULL,
+  nom_estudiante CHAR(30),
+  apell_paterno CHAR(30) NOT NULL,
+  apell_materno CHAR(30),
+  sexo CHAR(10),
+  fecha_nac DATE,
+  direccion CHAR(30),
+  telefono INTEGER,
+  colegio_egreso CHAR(30),
+  carr_estudiante CHAR(30),
+  anio_cursa INTEGER,
+  paralelo CHAR(1) NOT NULL,
+  PRIMARY KEY(id_estudiante)
+) 
+WITH (oids = false);
+-------------------------------F-sandra-02-03-02-2018---------------------------------
+------------------------------I-sandra-02-03-02-2018-------------------------------------
+--------------- SQL ---------------
+
+ALTER TABLE public.estudiante
+  ADD COLUMN id_materia INTEGER NOT NULL;
+-------------------------------F-sandra-02-03-02-2018---------------------------------
+------------------------------I-sandra-02-03-02-2018-------------------------------------
+--------------- SQL ---------------
+
+ALTER TABLE public.estudiante
+  ADD CONSTRAINT estudiante_fk FOREIGN KEY (id_materia)
+    REFERENCES public.materia(id_materia)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+    NOT DEFERRABLE;
+    -------------------------------F-sandra-02-03-02-2018---------------------------------
