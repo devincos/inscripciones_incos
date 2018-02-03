@@ -70,7 +70,7 @@ CREATE TABLE public.materia (
   id_materia SERIAL NOT NULL,
   nom_materia VARCHAR(50) NOT NULL,
   nro_hrs INTEGER,
-  "año_materia" INTEGER,
+  anio_materia INTEGER,
   id_carrera INTEGER NOT NULL,
   PRIMARY KEY(id_materia)
 ) 
