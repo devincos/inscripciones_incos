@@ -23,35 +23,35 @@ include_once("../principal/menu.php"); ?>
         <table class='table table-condensed'>
             <thead>
             <th> ID</th>
-            <th> NOMBRE</th>
+            <th> MATERIA</th>
             <th> MODALIDAD</th>
-            <th> EVALUACION</th>
-            <th> FECHA DE REGISTRO</th>
-            <th> OPCIONES</th>
+            <th> HORAS</th>
+            <th> AÑO DE MATERIA</th>
+            <th> CARRERA</th>
             </thead>
             <tbody>
-            <?php foreach ($arrCarreras as $carrera) { ?>
+            <?php foreach ($arrMateria as $materia) { ?>
                 <tr>
                     <td>
-                        <?= $carrera['id']; ?>
+                        <?= $materia['id_materia']; ?>
                     </td>
                     <td>
-                        <?= $carrera['nombre']; ?>
+                        <?= $materia['nom_materia']; ?>
                     </td>
                     <td>
-                        <?= $carrera['modalidad']; ?>
+                        <?= $materia['nro_hrs']; ?>
                     </td>
                     <td>
-                        <?= $carrera['evaluacion']; ?>
+                        <?= $materia['anio_materia']; ?>
                     </td>
                     <td>
-                        <?= $carrera['fecha_reg']; ?>
+                        <?= $materia['id_carrera']; ?>
                     </td>
                     <td>
                         <!--Opcion para actualizar el valor de la carrera-->
-                        <a href="<?= Config::baseurl() ?>views/carrera/form.php?id=<?= $carrera['id'] ?>"
+                        <a href="<?= Config::baseurl() ?>views/materia/form.php?id=<?= $materia['id'] ?>"
                            class="btn btn-primary glyphicon glyphicon-pencil"></a>
-                        <a href="<?= Config::baseurl() ?>controllers/carrera/delete.php"
+                        <a href="<?= Config::baseurl() ?>controllers/materia/delete.php"
                            class="btn btn-danger glyphicon glyphicon-trash"></a>
                     </td>
                 </tr>

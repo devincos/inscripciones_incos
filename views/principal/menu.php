@@ -23,6 +23,7 @@ include_once("cabecera.php");
         <ul class="nav navbar-nav">
             <li><a href="<?= Config::baseurl(); ?>views/principal/inicio.php">Inicio</a></li>
             <li><a href="<?= Config::baseurl(); ?>views/carrera/lista.php">Carreras</a></li>
+            <li><a href="<?= Config::baseurl(); ?>views/materia/lista.php">Materias</a></li>
             <li><a href="estudiante.php">Estudiantes</a></li>
         </ul>
     </div>

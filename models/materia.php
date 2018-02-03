@@ -9,7 +9,7 @@ class Materia
     public $nro_hors;
     public $anio_materia;
     public $id_carrera;
-    private $con;
+    private $con; /* es para hacer la conexion a la BD  */
 
     public function __construct()
     {
@@ -23,7 +23,7 @@ class Materia
             $query = $conexion->dbh->prepare('select * from materia');
             $query->execute();
             return $query->fetchAll();
-            $conexion->dbh = null;
+            $conexion->dbh = null;/*esta demas ya no se va a ejecutar*/
         } catch (PDOException $e) {
             $e->getMessage();
         }
