@@ -18,7 +18,7 @@ include_once("../principal/menu.php"); ?>
         } ?>
 
         <div class="row">
-            <a href="<?= Config::baseurl(); ?>views/materia/form.php" class="btn btn-success"> Nueva carrera</a><br><br>
+            <a href="<?= Config::baseurl(); ?>views/materia/form.php" class="btn btn-success"> Nueva Materia</a><br><br>
         </div>
         <table class='table table-condensed'>
             <thead>

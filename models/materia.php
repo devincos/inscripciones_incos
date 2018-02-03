@@ -6,7 +6,7 @@ class Materia
     
     public $id_materia;
     public $nom_materia;
-    public $nro_hors;
+    public $nro_hrs;
     public $anio_materia;
     public $id_carrera;
     private $con; /* es para hacer la conexion a la BD  */
