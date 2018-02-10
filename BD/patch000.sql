@@ -70,7 +70,25 @@ CREATE TABLE public.materia (
   id_materia SERIAL NOT NULL,
   nom_materia VARCHAR(50) NOT NULL,
   nro_hrs INTEGER,
-  anio_materia INTEGER,
+  anio_materia INTEGER,CREATE TABLE public.asignacion_new (
+  id_inscripcion INTEGER NOT NULL,
+  ci CHAR(15) NOT NULL,
+  id_materia INTEGER NOT NULL,
+  nota1 SMALLINT,
+  nota2 SMALLINT,
+  CONSTRAINT asignacion_new_fk FOREIGN KEY (id_inscripcion)
+    REFERENCES public.inscripcion(id_inscripcion)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+    NOT DEFERRABLE,
+  CONSTRAINT asignacion_new_fk1 FOREIGN KEY (ci)
+    REFERENCES public.estudiante(ci)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+    NOT DEFERRABLE
+) 
+WITH (oids = false);
+
   id_carrera INTEGER NOT NULL,
   PRIMARY KEY(id_materia)
 ) 
@@ -103,13 +121,59 @@ WITH (oids = false);
 ALTER TABLE public.estudiante
   ADD COLUMN id_materia INTEGER NOT NULL;
 -------------------------------F-sandra-02-03-02-2018---------------------------------
-------------------------------I-sandra-02-03-02-2018-------------------------------------
---------------- SQL ---------------
+------------------------------I-ariel-01-09-02-2018-------------------------------------
 
-ALTER TABLE public.estudiante
-  ADD CONSTRAINT estudiante_fk FOREIGN KEY (id_materia)
-    REFERENCES public.materia(id_materia)
+
+CREATE TABLE public.asignacion (
+  id_inscripcion INTEGER NOT NULL,
+  ci CHAR(15) NOT NULL,
+  id_materia INTEGER NOT NULL,
+  nota1 SMALLINT,
+  nota2 SMALLINT,
+  CONSTRAINT asignacion_fk FOREIGN KEY (id_inscripcion)
+    REFERENCES public.inscripcion(id_inscripcion)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
-    NOT DEFERRABLE;
-    -------------------------------F-sandra-02-03-02-2018---------------------------------
+    NOT DEFERRABLE,
+  CONSTRAINT asignacion_fk1 FOREIGN KEY (ci)
+    REFERENCES public.estudiante(ci)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+    NOT DEFERRABLE
+) 
+WITH (oids = false);
+
+CREATE TABLE public.estudiante (
+  ci CHAR(15) NOT NULL,
+  nom_estudiante CHAR(30) NOT NULL,
+  apell_paterno CHAR(30),
+  apell_materno CHAR(30),
+  sexo CHAR(10) NOT NULL,
+  fecha_nac DATE NOT NULL,
+  direccion CHAR(30),
+  telefono INTEGER,
+  colegio_egreso CHAR(30) NOT NULL,
+  CONSTRAINT estudiante_pkey PRIMARY KEY(ci)
+) 
+WITH (oids = false);
+
+CREATE TABLE public.inscripcion (
+  id_inscripcion SERIAL,
+  ci CHAR(15) NOT NULL,
+  id_carrera INTEGER NOT NULL,
+  anio SMALLINT NOT NULL,
+  paralelo CHAR(1) NOT NULL,
+  CONSTRAINT inscripcion_pkey PRIMARY KEY(id_inscripcion),
+  CONSTRAINT inscripcion_fk FOREIGN KEY (ci)
+    REFERENCES public.estudiante(ci)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+    NOT DEFERRABLE,
+  CONSTRAINT inscripcion_fk1 FOREIGN KEY (id_carrera)
+    REFERENCES public.carrera(id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+    NOT DEFERRABLE
+) 
+WITH (oids = false);
+-------------------------------F-ariel-01-09-02-2018---------------------------------

@@ -28,8 +28,18 @@ class Materia
             $e->getMessage();
         }
     }
-
+    public function insertarMateria($nombre, $nro_horas, $anio_materia)
+    {
+        $resultado = false;
+        try {
+            $consulta = "insert into materia (nom_materia, nro_hrs, anio_materia) values('" . $nombre . "'," . $nro_horas . "," . $anio_materia.")";
+            $query = $this->con->dbh->prepare($consulta);
+            $resultado = $query->execute();
+            $this->dbh = null;
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+        return $resultado;
+    }
 }
-
-
 ?>

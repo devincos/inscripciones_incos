@@ -16,11 +16,11 @@ include_once("../principal/menu.php");
             //datos del formulario de la materia
             $id_materia = filter_input(INPUT_GET, 'id_materia', FILTER_SANITIZE_NUMBER_INT);
             $nom_materia  = filter_input(INPUT_GET, 'nom_materia', FILTER_SANITIZE_STRING);
-            $nro_hrs = filter_input(INPUT_GET, 'nro_hrs', FILTER_SANITIZE_STRING);
-            $anio_materia = filter_input(INPUT_GET, 'anio_mat', FILTER_SANITIZE_STRING);
+            $nro_hrs = filter_input(INPUT_GET, 'nro_hrs', FILTER_SANITIZE_NUMBER_INT);
+            $anio_materia = filter_input(INPUT_GET, 'anio_materia', FILTER_SANITIZE_NUMBER_INT);
 
-            if (isset($_GET['id'])) {
-                list($id_materia, $nom_mat, $nro_hrs, $anio_mat) = Carrera::getCarrera(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
+            if (isset($_GET['id_materia'])) {
+                list($id_materia, $nom_materia, $nro_hrs, $anio_materia) = Materia::getMateria(filter_input(INPUT_GET, 'id_materia', FILTER_SANITIZE_NUMBER_INT));
             }
             ?>
 
