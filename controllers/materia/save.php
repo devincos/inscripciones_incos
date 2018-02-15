@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
     }else{
-        if ($materia_nueva->ActualizarMateria($datos['nom_materia'], $datos['nro_hrs'], $datos['anio_materia'], $datos['id_carrera'])) {
+        if ($materia_nueva->ActualizarMateria($datos['id_materia'],$datos['nom_materia'], $datos['nro_hrs'], $datos['anio_materia'], $datos['id_carrera'])) {
             header("Location:" . Config::baseurl() . "views/materia/lista.php?mensaje=$mensaje");
             exit();
 

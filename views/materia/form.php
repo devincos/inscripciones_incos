@@ -65,7 +65,7 @@ include_once("../principal/menu.php");
                     <select name="anio_materia" id="anio_materia" class="form-control">
                         <option value="">seleccione un año</option>
                         $i
-                         <?php for ($i=0; $i<=2; $i++) { ?>
+                         <?php for ($i=1; $i<=3; $i++) { ?>
 
                             <option value="<?= $i ?>" <?= ($anio_materia == $i ? 'selected' : '') ?>><?php echo $anual[$i] ?></option>
 
