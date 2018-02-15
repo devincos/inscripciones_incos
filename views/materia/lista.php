@@ -24,8 +24,7 @@ include_once("../principal/menu.php"); ?>
             <thead>
             <th> ID</th>
             <th> MATERIA</th>
-            <th> MODALIDAD</th>
-            <th> HORAS</th>
+            <th> NRO.HRS.</th>
             <th> AÑO DE MATERIA</th>
             <th> CARRERA</th>
             </thead>
@@ -45,11 +44,11 @@ include_once("../principal/menu.php"); ?>
                         <?= $materia['anio_materia']; ?>
                     </td>
                     <td>
-                        <?= $materia['id_carrera']; ?>
+                        <?= $materia['nombre']; ?>
                     </td>
                     <td>
                         <!--Opcion para actualizar el valor de la carrera-->
-                        <a href="<?= Config::baseurl() ?>views/materia/form.php?id=<?= $materia['id'] ?>"
+                        <a href="<?= Config::baseurl() ?>views/materia/form.php?id=<?= $materia['id_materia'] ?>"
                            class="btn btn-primary glyphicon glyphicon-pencil"></a>
                         <a href="<?= Config::baseurl() ?>controllers/materia/delete.php"
                            class="btn btn-danger glyphicon glyphicon-trash"></a>
