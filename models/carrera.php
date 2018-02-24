@@ -104,7 +104,7 @@ class Carrera
     public function BorrarCarrera($id)
     {
         try {
-            $query = $this->dbh->prepare('delete from carrera where id = ?');
+            $query = $this->con->dbh->prepare('delete from carrera where id = ?');
             $query->bindParam(1, $id);
             $query->execute();
             $this->dbh = null;
