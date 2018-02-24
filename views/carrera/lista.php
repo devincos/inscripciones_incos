@@ -10,6 +10,14 @@ include_once("../principal/menu.php"); ?>
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $mensaje = filter_input(INPUT_GET, 'mensaje', FILTER_SANITIZE_STRING);
             $error = filter_input(INPUT_GET, 'error', FILTER_SANITIZE_STRING);
+            if (!empty($error)) { ?>
+                <div class="alert alert-danger">
+                    <strong>Error!</strong> <?= $error ?>.
+                </div>
+                <?php
+            }
+
+
             if (!empty($mensaje)) { ?>
                 <div class="alert alert-success">
                     <strong>Exito!</strong> <?= $mensaje ?>.
@@ -51,7 +59,7 @@ include_once("../principal/menu.php"); ?>
                         <!--Opcion para actualizar el valor de la carrera-->
                         <a href="<?= Config::baseurl() ?>views/carrera/form.php?id=<?= $carrera['id'] ?>"
                            class="btn btn-primary glyphicon glyphicon-pencil"></a>
-                        <a href="<?= Config::baseurl() ?>controllers/carrera/delete.php"
+                        <a href="<?= Config::baseurl() ?>controllers/carrera/delete.php?id=<?= $carrera['id'] ?>"
                            class="btn btn-danger glyphicon glyphicon-trash"></a>
                     </td>
                 </tr>
