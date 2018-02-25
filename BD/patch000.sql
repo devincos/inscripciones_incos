@@ -116,3 +116,33 @@ WITH (oids = false);
 
 
 -------------------------------F-sandra-02-03-02-2018---------------------------------
+------------------------------I-sandra-01-23-02-2018-------------------------------------
+--------------- SQL ---------------
+--------------- SQL ---------------
+
+ALTER TABLE public.estudiante
+  ADD COLUMN id_estudiante SERIAL NOT NULL;
+
+--------------- SQL ---------------
+
+ALTER TABLE public.estudiante
+  DROP CONSTRAINT estudiante_pkey RESTRICT;
+
+  --------------- SQL ---------------
+
+ALTER TABLE public.estudiante
+  ADD PRIMARY KEY (id_estudiante);
+
+  --------------- SQL ---------------
+
+ALTER TABLE public.asignacion
+  ADD COLUMN id_asignacion SERIAL NOT NULL PRIMARY KEY;
+
+  --------------- SQL ---------------
+
+ALTER TABLE public.asignacion
+  DROP COLUMN id_estudiante;
+
+
+-------------------------------F-sandra-01-23-02-2018---------------------------------
+
