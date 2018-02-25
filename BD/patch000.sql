@@ -145,4 +145,64 @@ ALTER TABLE public.asignacion
 
 
 -------------------------------F-sandra-01-23-02-2018---------------------------------
+------------------------------I-ariel-01-23-02-2018-------------------------------------
+-----------
 
+CREATE TABLE public.estudiante (
+  nom_estudiante CHAR(30) NOT NULL,
+  apell_paterno CHAR(30),
+  apell_materno CHAR(30),
+  sexo CHAR(10) NOT NULL,
+  fecha_nac DATE NOT NULL,
+  direccion CHAR(30),
+  telefono INTEGER,
+  colegio_egreso CHAR(30) NOT NULL,
+  id_estudiante SERIAL,
+  ci CHAR(15) NOT NULL,
+  CONSTRAINT estudiante_pkey PRIMARY KEY(id_estudiante)
+) 
+WITH (oids = false);
+
+CREATE TABLE public.inscripcion (
+  id_inscripcion SERIAL,
+  id_carrera INTEGER NOT NULL,
+  grado SMALLINT NOT NULL,
+  paralelo CHAR(1) NOT NULL,
+  id_estudiante INTEGER NOT NULL,
+  fecha_inscri DATE,
+  CONSTRAINT inscripcion_pkey PRIMARY KEY(id_inscripcion),
+  CONSTRAINT inscripcion_fk FOREIGN KEY (id_estudiante)
+    REFERENCES public.estudiante(id_estudiante)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+    NOT DEFERRABLE,
+  CONSTRAINT inscripcion_fk1 FOREIGN KEY (id_carrera)
+    REFERENCES public.carrera(id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+    NOT DEFERRABLE
+) 
+WITH (oids = false);
+
+CREATE TABLE public.asignacion (
+  id_inscripcion INTEGER NOT NULL,
+  id_materia INTEGER NOT NULL,
+  nota1 SMALLINT,
+  nota2 SMALLINT,
+  id_asignacion SERIAL,
+  fecha_asig DATE,
+  CONSTRAINT asignacion_pkey PRIMARY KEY(id_asignacion),
+  CONSTRAINT asignacion_fk FOREIGN KEY (id_inscripcion)
+    REFERENCES public.inscripcion(id_inscripcion)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+    NOT DEFERRABLE,
+  CONSTRAINT asignacion_fk1 FOREIGN KEY (id_materia)
+    REFERENCES public.materia(id_materia)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+    NOT DEFERRABLE
+) 
+WITH (oids = false);
+
+-------------------------------F-ariel-01-23-02-2018---------------------------------
